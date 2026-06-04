@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nahom Alemayehu | Portfolio</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          Segoe UI,
+          sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        line-height: 1.6;
+      }
+
+      nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        padding: 15px 30px;
+        border-radius: 50px;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #38bdf8;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .hero img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #38bdf8;
+        margin-bottom: 25px;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        color: #94a3b8;
+        margin-top: 10px;
+        font-size: 1.2rem;
+      }
+
+      .container {
+        width: min(1100px, 90%);
+        margin: auto;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: #38bdf8;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        border-radius: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px;
+        border-radius: 20px;
+        transition: 0.3s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+      }
+
+      .project-card h3 {
+        margin-bottom: 10px;
+        color: #38bdf8;
+      }
+
+      .project-card a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .skill {
+        background: #1e293b;
+        padding: 10px 18px;
+        border-radius: 30px;
+      }
+
+      .contact {
+        text-align: center;
+      }
+
+      .contact a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        color: #94a3b8;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          width: 90%;
+          padding: 15px;
+        }
+
+        nav ul {
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <img src="nahom.jpg" alt="Nahom Alemayehu" />
+
+      <h1>Nahom Alemayehu</h1>
+
+      <p>Frontend Developer • UI Enthusiast • Coffee Powered ☕</p>
+    </header>
+
+    <div class="container">
+      <section id="about">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="card">
+          <p>
+            Hey! I'm Nahom Alemayehu. I enjoy building beautiful, responsive
+            websites and turning ideas into interactive experiences. I love
+            clean design, smooth animations, and learning new technologies.
+          </p>
+
+          <br />
+
+          <p>
+            When I'm not coding, you'll probably find me listening to music,
+            exploring design inspiration, or improving my frontend skills.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">TypeScript</div>
+          <div class="skill">React</div>
+          <div class="skill">Next.js</div>
+          <div class="skill">Git</div>
+          <div class="skill">GitHub</div>
+          <div class="skill">Figma</div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="grid">
+          <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>Personal portfolio built with HTML, CSS and JavaScript.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>Recipe Finder App</h3>
+            <p>Search recipes and discover new meals.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>To-Do Application</h3>
+            <p>Task manager with project organization and local storage.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>UI Clone Project</h3>
+            <p>Pixel-perfect recreation of a modern application interface.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card contact">
+          <p>Email: nahom_alemayehu@gmail.com</p>
+
+          <br />
+
+          <p>
+            GitHub:
+            <a href="#">github.com/nahomalemayehu</a>
+          </p>
+
+          <p>
+            LinkedIn:
+            <a href="#">linkedin.com/in/nahomalemayehu</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <footer>© 2026 Nahom Alemayehu. Built with ❤️ and lots of coffee.</footer>
+  </body>
+</html>

@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yonathan Yonas | Cyber Dev</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #05080f;
+        color: #d1fae5;
+        overflow-x: hidden;
+      }
+
+      /* CYBER GRID BACKGROUND */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(34, 197, 94, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(34, 197, 94, 0.08) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* GLOW ORBS */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(34, 197, 94, 0.15),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(0, 255, 170, 0.1),
+            transparent 40%
+          );
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        backdrop-filter: blur(12px);
+        padding: 12px 24px;
+        border-radius: 999px;
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+      }
+
+      nav ul {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+      }
+
+      nav a {
+        color: #a7f3d0;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #22c55e;
+        text-shadow: 0 0 10px #22c55e;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .hero img {
+        width: 230px;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #22c55e;
+        box-shadow:
+          0 0 25px #22c55e,
+          0 0 60px rgba(34, 197, 94, 0.4);
+        margin-bottom: 2rem;
+        animation: pulse 2.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 25px #22c55e;
+        }
+        50% {
+          box-shadow:
+            0 0 45px #22c55e,
+            0 0 80px rgba(34, 197, 94, 0.5);
+        }
+        100% {
+          box-shadow: 0 0 25px #22c55e;
+        }
+      }
+
+      .hero h1 {
+        font-size: 4.3rem;
+        font-weight: 800;
+        background: linear-gradient(90deg, #22c55e, #00ff99, #16a34a);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+      }
+
+      .hero p {
+        max-width: 700px;
+        margin-top: 10px;
+        color: #9ca3af;
+        font-size: 1.2rem;
+      }
+
+      /* BUTTON */
+      .btn {
+        margin-top: 25px;
+        padding: 14px 28px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        color: #05080f;
+        background: #22c55e;
+        box-shadow: 0 0 25px rgba(34, 197, 94, 0.4);
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 0 40px rgba(34, 197, 94, 0.7);
+      }
+
+      /* CONTAINER */
+      .container {
+        width: min(1100px, 90%);
+        margin: auto;
+      }
+
+      /* SECTIONS */
+      section {
+        padding: 90px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: #22c55e;
+        margin-bottom: 25px;
+        text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+      }
+
+      /* GLASS CARD */
+      .card {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        border-radius: 18px;
+        padding: 30px;
+        box-shadow: 0 0 25px rgba(34, 197, 94, 0.08);
+        backdrop-filter: blur(10px);
+      }
+
+      /* SKILLS */
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .skill {
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        background: rgba(0, 0, 0, 0.3);
+        color: #a7f3d0;
+        transition: 0.3s;
+      }
+
+      .skill:hover {
+        box-shadow: 0 0 15px #22c55e;
+        transform: translateY(-2px);
+      }
+
+      /* PROJECTS */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .project-card {
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        padding: 25px;
+        border-radius: 18px;
+        transition: 0.3s;
+        box-shadow: 0 0 15px rgba(34, 197, 94, 0.08);
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 35px rgba(34, 197, 94, 0.25);
+        border-color: #22c55e;
+      }
+
+      .project-card h3 {
+        color: #22c55e;
+        margin-bottom: 10px;
+      }
+
+      .project-card p {
+        color: #cbd5e1;
+      }
+
+      /* CONTACT */
+      .contact-list {
+        list-style: none;
+      }
+
+      .contact-list li {
+        margin-bottom: 14px;
+      }
+
+      .contact-list a {
+        color: #22c55e;
+        text-decoration: none;
+      }
+
+      /* FOOTER */
+      footer {
+        text-align: center;
+        padding: 40px;
+        border-top: 1px solid rgba(34, 197, 94, 0.2);
+        color: #64748b;
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.7rem;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        .hero img {
+          width: 170px;
+          height: 170px;
+        }
+      }
+      .yonathan-img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        /* KEY FIX */
+        object-position: center 90%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <img src="./jonathan.jpeg" class="yonathan-img" />
+      <h1>Yonathan Yonas</h1>
+
+      <p>
+        Cyberpunk Frontend Developer building futuristic, glowing web
+        experiences with HTML, CSS, and JavaScript.
+      </p>
+
+      <a href="#projects" class="btn">Enter Portfolio</a>
+    </header>
+
+    <div class="container">
+      <section id="about">
+        <h2 class="section-title">ABOUT</h2>
+
+        <div class="card">
+          <p>
+            I am Yonathan Yonas, a frontend developer focused on creating
+            immersive UI experiences inspired by cyberpunk and futuristic design
+            systems.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">SKILLS</h2>
+
+        <div class="skills">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">UI Design</div>
+          <div class="skill">Responsive Design</div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+
+        <div class="projects">
+          <div class="project-card">
+            <h3>Portfolio Site</h3>
+            <p>Cyber-inspired personal developer profile.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>Landing Page</h3>
+            <p>Futuristic UI landing experience with glow effects.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>JS App</h3>
+            <p>Interactive JavaScript-based mini application.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">CONTACT</h2>
+
+        <div class="card">
+          <ul class="contact-list">
+            <li>Email: yonathan@example.com</li>
+            <li>GitHub: github.com/yonathan</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>© 2026 Yonathan Yonas • Cyber Frontend Developer</footer>
+  </body>
+</html>

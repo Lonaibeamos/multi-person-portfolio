@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patrick | Frontend Developer</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #0b1220;
+        color: #e5e7eb;
+        line-height: 1.7;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        padding: 14px 28px;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 22px;
+        list-style: none;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #e5e7eb;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #f59e0b;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .hero img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 6px solid #f59e0b;
+        box-shadow: 0 0 45px rgba(245, 158, 11, 0.35);
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        background: linear-gradient(90deg, #f59e0b, #fb7185);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero p {
+        max-width: 650px;
+        color: #9ca3af;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* BUTTON */
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        background: #f59e0b;
+        color: #0b1220;
+        padding: 14px 28px;
+        border-radius: 999px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        background: #fb923c;
+      }
+
+      /* SECTIONS */
+      .container {
+        width: min(1100px, 90%);
+        margin: auto;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: #f59e0b;
+        margin-bottom: 25px;
+      }
+
+      /* CARD */
+      .card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+      }
+
+      /* SKILLS */
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .skill {
+        background: #111827;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 12px 20px;
+        border-radius: 999px;
+        transition: 0.3s;
+      }
+
+      .skill:hover {
+        border-color: #f59e0b;
+        transform: translateY(-2px);
+      }
+
+      /* PROJECTS */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 25px;
+        transition: 0.3s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: #f59e0b;
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15);
+      }
+
+      .project-card h3 {
+        color: #f59e0b;
+        margin-bottom: 10px;
+      }
+
+      .project-card p {
+        color: #cbd5e1;
+      }
+
+      /* CONTACT */
+      .contact-list {
+        list-style: none;
+      }
+
+      .contact-list li {
+        margin-bottom: 15px;
+      }
+
+      .contact-list a {
+        color: #f59e0b;
+        text-decoration: none;
+      }
+
+      .contact-list a:hover {
+        text-decoration: underline;
+      }
+
+      /* FOOTER */
+      footer {
+        text-align: center;
+        padding: 40px;
+        color: #9ca3af;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 40px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        nav {
+          width: 90%;
+          padding: 14px;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .hero img {
+          width: 170px;
+          height: 170px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <img src="patrick.jpg" alt="Patrick" />
+
+      <h1>Patrick</h1>
+
+      <p>
+        Frontend Developer passionate about building clean, modern and
+        responsive websites with HTML, CSS and JavaScript.
+      </p>
+
+      <a href="#projects" class="btn">View Projects</a>
+    </header>
+
+    <div class="container">
+      <section id="about">
+        <h2 class="section-title">About Me</h2>
+
+        <div class="card">
+          <p>
+            Hi, I'm Patrick. I enjoy building web interfaces and turning ideas
+            into real interactive websites. I focus on clean design, usability,
+            and performance.
+          </p>
+
+          <br />
+
+          <p>
+            I'm continuously learning frontend technologies and improving my
+            ability to build real-world projects.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills">
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Responsive Design</div>
+          <div class="skill">Git</div>
+          <div class="skill">GitHub</div>
+          <div class="skill">VS Code</div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects">
+          <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>A personal portfolio showcasing my development journey.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>Landing Page</h3>
+            <p>A responsive modern landing page with clean UI design.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>JavaScript App</h3>
+            <p>An interactive web app built with vanilla JavaScript.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card">
+          <ul class="contact-list">
+            <li>
+              📧 Email:
+              <a href="https://patrick@gmail.com">patrick@gmail.com</a>
+            </li>
+            <li>
+              💻 GitHub:
+              <a href="https://github.com/patrick">github.com/patrick</a>
+            </li>
+            <li>
+              🌐 LinkedIn:
+              <a href="https://www.linkedin.com/in/patrick"
+                >linkedin.com/in/patrick</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>© 2026 Patrick • Frontend Developer</footer>
+  </body>
+</html>

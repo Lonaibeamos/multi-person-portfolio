@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beamlak Mulatu | Frontend Developer</title>
+
+    <style>
+      /* quick reset – I always forget box-sizing at first */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto;
+        background: #05070d;
+        color: #e5e7eb;
+        line-height: 1.75;
+      }
+
+      /* cheap ambient glow – just playing around */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(255, 215, 0, 0.08),
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 40%,
+            rgba(59, 130, 246, 0.08),
+            transparent 45%
+          );
+        pointer-events: none;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 12, 18, 0.7);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        padding: 12px 26px;
+        z-index: 1000;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #cbd5e1;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        font-size: 0.95rem;
+        transition: 0.25s;
+      }
+
+      nav a:hover {
+        color: #d4af37;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .hero img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid rgba(212, 175, 55, 0.8);
+        box-shadow: 0 0 80px rgba(212, 175, 55, 0.12);
+        margin-bottom: 2rem;
+        /* might tweak the position later if I update the photo */
+        object-position: center top;
+      }
+
+      .hero h1 {
+        font-size: 4.3rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .hero p {
+        max-width: 750px;
+        margin-top: 10px;
+        color: #94a3b8;
+        font-size: 1.15rem;
+      }
+
+      .btn {
+        margin-top: 25px;
+        display: inline-block;
+        text-decoration: none;
+        background: transparent;
+        border: 1px solid #d4af37;
+        color: #d4af37;
+        padding: 12px 28px;
+        border-radius: 999px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #d4af37;
+        color: #05070d;
+      }
+
+      /* ===== THE SQUAD ===== */
+      .team-hub {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 22px;
+        margin-top: 35px;
+        flex-wrap: wrap;
+      }
+
+      .member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #94a3b8;
+        font-size: 0.75rem;
+        transition: 0.3s;
+      }
+
+      .member img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(212, 175, 55, 0.4);
+        transition: 0.3s;
+      }
+
+      .member:hover img {
+        transform: scale(1.12);
+        border-color: #d4af37;
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+      }
+
+      .member:hover {
+        color: #d4af37;
+      }
+
+      /* LAYOUT */
+      .container {
+        width: min(1050px, 90%);
+        margin: auto;
+      }
+
+      section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #d4af37;
+        margin-bottom: 22px;
+      }
+
+      .card {
+        border-left: 2px solid rgba(212, 175, 55, 0.4);
+        padding: 20px 0 20px 20px;
+        color: #cbd5e1;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill {
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        font-size: 0.9rem;
+      }
+
+      .projects {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .project-card {
+        padding: 18px 20px;
+        border-left: 2px solid rgba(212, 175, 55, 0.3);
+        transition: 0.25s;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .project-card:hover {
+        border-left: 2px solid #d4af37;
+        transform: translateX(6px);
+      }
+
+      .project-card h3 {
+        color: #f8fafc;
+      }
+
+      .project-card p {
+        color: #94a3b8;
+      }
+
+      footer {
+        text-align: center;
+        padding: 50px;
+        color: #64748b;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.6rem;
+        }
+        .hero img {
+          /* keep face centered on small screens */
+          object-fit: cover;
+          object-position: center top;
+        }
+      }
+
+      /* oops, forgot to clean this up – doesn't break anything */
+      a {
+        color: rgb(81, 81, 224);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- TODO: maybe add a dark/light toggle someday -->
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <img src="beamlak.jpeg" alt="Beamlak" />
+
+      <h1>Beamlak Mulatu</h1>
+
+      <p>
+        Hey! I’m Beamlak. I build websites that are fast, clean, and don’t fall
+        apart when you resize the window. Mostly frontend, lots of vanilla JS,
+        and a soft spot for good typography.
+      </p>
+
+      <a href="#projects" class="btn">View My Work</a>
+
+      <!-- my crew – they're awesome -->
+      <div class="team-hub">
+        <h1>My Teamz</h1>
+        <a href="beamlak.html" class="member">
+          <img src="beamlak.jpeg" alt="Beamlak" />
+          <span>Beamlak</span>
+        </a>
+
+        <a href="beker.html" class="member">
+          <img src="beker.jpg" alt="Beker" />
+          <span>Beker</span>
+        </a>
+
+        <a href="nahom.html" class="member">
+          <img src="nahom.jpg" alt="Nahom" />
+          <span>Nahom</span>
+        </a>
+
+        <a href="patrick.html" class="member">
+          <img src="patrick.jpg" alt="Patrick" />
+          <span>Patrick</span>
+        </a>
+
+        <a href="yonathan.html" class="member">
+          <img src="yonathan.jpg" alt="Yonathan" />
+          <span>Yonathan</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="about">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="card">
+          I’m Beamlak, a frontend developer who enjoys making structured,
+          scalable interfaces with HTML, CSS, and JavaScript. I’ve been
+          tinkering with Webpack and npm for a while – I love when a build
+          actually works on the first try. When I’m not coding, you’ll find me
+          obsessing over UI details or breaking something just to fix it again.
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">SKILLS</h2>
+        <div class="skills">
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Webpack</div>
+          <div class="skill">NPM</div>
+          <!-- maybe add TypeScript soon -->
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+
+        <div class="projects">
+          <a
+            class="project-card"
+            href="https://lonaibeamos.github.io/Todo-List/"
+            target="_blank"
+          >
+            <h3>To-Do App</h3>
+            <p>
+              Modular JS + Webpack. My go-to example when someone asks “do you
+              even structure your code?”
+            </p>
+          </a>
+
+          <a
+            class="project-card"
+            href="https://lonaibeamos.github.io/Restaurant-Page/"
+            target="_blank"
+          >
+            <h3>Restaurant Page</h3>
+            <p>
+              DOM manipulation on steroids. Practiced building the whole UI with
+              JavaScript alone.
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">CONTACT</h2>
+        <div class="card">
+          <a href="https://lonaibeamos@gmail.com">lonaibeamos@gmail.com</a>
+          <br />
+          <a href="https://github.com/Lonaibeamos" target="_blank"
+            >github.com/Lonaibeamos</a
+          >
+        </div>
+      </section>
+    </div>
+
+    <footer>© 2026 Beamlak Mulatu • Frontend Developer</footer>
+  </body>
+</html>
